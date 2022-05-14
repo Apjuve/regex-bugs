@@ -67,16 +67,60 @@ u - Makes the expression assume individual characters as code points, not code u
 
 ### Grouping and Capturing
 
+Groups use the ( ) symbols (like alternations, but the | symbol is not needed). They are useful for creating blocks of patterns, so you can apply repetitions or other modifiers to them as a whole. 
+example; 
+
+([a-x]{3}[0-9])+, the + metacharacter is applied to the whole group.
+
 ### Bracket Expressions
+
+Brackets indicate a set of characters to match. Any individual character between the brackets will match, and you can also use a hyphen to define a set.
+
+example;
+
+[A-Za-z] [0-9]
+
+'elephant'.match(/[abcd]/) // -> matches 'a'
 
 ### Greedy and Lazy Match
 
+'Greedy' means match longest possible string.
+
+example;
+
+ h.+l
+
+'Lazy' means match shortest possible string.
+
+exmple;
+
+h.+?l
+
 ### Boundaries
+
+To make it easier to find whole words, we can use the metacharacter \b. It marks the beginning and the end of an alphanumeric sequence*.
+
+example;
+
+\bstack\b	foo stack bar
 
 ### Back-references
 
+Backreferences match the same text as previously matched by a capturing group.
+
+example;
+
+<([A-Z][A-Z0-9]*)\b[^>]*>.*?</\1>. 
+
+This regex contains only one pair of parentheses, which capture the string matched by [A-Z][A-Z0-9]*
+
 ### Look-ahead and Look-behind
+Lookahead and lookbehind, collectively called “lookaround”, are zero-length assertions just like the start and end of line, and start and end of word anchors.
+The difference is that lookaround actually matches characters, but then gives up the match, returning only the result: match or no match. That is why they are called “assertions”. They do not consume characters in the string, but only assert whether a match is possible or not.
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+Tutorial was created by Abi Ponce
+
+[GitHub] (https://github.com/Apjuve)
+[Email] (abiponce.ap@gmail.com)
